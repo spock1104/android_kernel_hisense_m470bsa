@@ -301,7 +301,7 @@ static void tegra_kbc_report_keys(struct tegra_kbc *kbc)
 	 * any 2 of the 3 keys share a row, and any 2 of them share a column.
 	 * If so ignore the key presses for this iteration.
 	 */
-	if ((kbc->use_ghost_filter) && (num_down >= 3)) {
+	if ((kbc->use_ghost_filter) && (num_down >= 3) && (num_down < KBC_MAX_KPENT)) {
 		for (i = 0; i < num_down; i++) {
 			unsigned int j;
 			u8 curr_col = scancodes[i] & 0x07;
